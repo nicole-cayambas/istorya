@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StoryController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -16,12 +17,11 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Discover/Index', [
-        'trending_stories' => ['hatdog' => 'hehe'],
-        'featured_stories' => ['hatdog_ulet' => 'hihi'],
-    ]);
-})->name('discover');
+Route::get('/', [StoryController::class, 'index'])->name('discover');
+
+Route::controller(StoryController::class)->prefix('stories')->group(function () {
+    Route::get('/{story}', 'show')->name('story');
+});
 
 // Route::get('/dashboard', function () {
 //     return Inertia::render('Dashboard');

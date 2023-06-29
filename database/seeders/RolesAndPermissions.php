@@ -2,17 +2,19 @@
 
 namespace Database\Seeders;
 
-use App\Models\Story;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
-class StorySeeder extends Seeder
+class RolesAndPermissions extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Story::factory(100)->create();
+        Role::create(['name' => 'developer']);
+        Permission::create(['name' => 'view_users']);
     }
 }

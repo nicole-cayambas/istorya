@@ -2,27 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SearchStoriesRequest;
 use App\Http\Requests\StoreStoryRequest;
 use App\Http\Requests\UpdateStoryRequest;
 use App\Models\Story;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class StoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Display a listing of the resource.
-     */
-    public function search(Request $request)
+    public function index(SearchStoriesRequest $request)
     {
 
+        return Inertia::render('Discover/Index', [
+            'trending_stories' => [],
+            'featured_stories' => [],
+            'stories' => $request->searchStories()
+        ]);
     }
 
     /**
@@ -46,7 +45,9 @@ class StoryController extends Controller
      */
     public function show(Story $story)
     {
-        //
+        return Inertia::render('Story/Index', [
+            'story' => $story
+        ]);
     }
 
     /**
