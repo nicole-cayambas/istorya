@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Story;
 use Illuminate\Foundation\Http\FormRequest;
 
-class SearchStoriesRequest extends FormRequest
+class GlobalSearchRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,12 +28,11 @@ class SearchStoriesRequest extends FormRequest
         ];
     }
 
-    public function searchStories()
+    public function results()
     {
-        return Story::search();
-        // if($this->search){
-
-        // }
-        // return Story::where
+        return [
+            'stories' => [],
+            'users' => []
+        ]
     }
 }

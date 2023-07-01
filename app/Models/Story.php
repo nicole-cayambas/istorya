@@ -20,4 +20,9 @@ class Story extends Model
     {
         return self::with('author')->paginate(15);
     }
+
+    public static function featured()
+    {
+        //
+    }
 }

@@ -7,7 +7,7 @@ import { Link } from '@inertiajs/react'
 
 const StoryCard = ({ story }) => {
     return (
-        <Link href={`stories/${story?.id}`}>
+        <Link href={`story/${story?.id}`}>
             <Card otherClasses={'h-80'}>
                 <Flex otherClasses='flex-col justify-between h-full'>
                     <Flex>

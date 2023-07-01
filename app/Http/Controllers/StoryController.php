@@ -16,11 +16,8 @@ class StoryController extends Controller
      */
     public function index(SearchStoriesRequest $request)
     {
-
-        return Inertia::render('Discover/Index', [
-            'trending_stories' => [],
-            'featured_stories' => [],
-            'stories' => $request->searchStories()
+        return Inertia::render('Admin/Story/Index', [
+            'result' => $request->searchStories()
         ]);
     }
 
