@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
+use App\Http\Controllers\DiscoverController;
+use App\Http\Controllers\StoryController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,19 +16,14 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Discover/Index', [
-        'trending_stories' => ['hatdog' => 'hehe'],
-        'featured_stories' => ['hatdog_ulet' => 'hihi'],
-    ]);
-})->name('discover');
+Route::get('/', [DiscoverController::class, 'index'])->name('discover');
+Route::get('/story/{story}', [StoryController::class, 'show']);
 
 // Route::get('/dashboard', function () {
 //     return Inertia::render('Dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::controller(ProfileController::class)->group(function () {
         Route::get('/profile', 'edit')->name('profile.edit');
         Route::patch('/profile', 'update')->name('profile.update');
