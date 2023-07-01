@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Http\Resources\StoryCollection;
 use App\Models\Story;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -31,10 +32,6 @@ class SearchStoriesRequest extends FormRequest
 
     public function searchStories()
     {
-        return Story::search();
-        // if($this->search){
-
-        // }
-        // return Story::where
+        return new StoryCollection(Story::search($this));
     }
 }
