@@ -43,7 +43,7 @@ class StoryController extends Controller
     public function show(Story $story)
     {
         return Inertia::render('Story/Index', [
-            'story' => $story
+            'story' => $story->load('author')
         ]);
     }
 

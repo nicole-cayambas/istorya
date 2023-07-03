@@ -24,7 +24,7 @@ class SearchStoriesRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'search' => 'string',
+            'search' => 'nullable|string',
             'page' => 'numeric',
             'limit' => 'numeric'
         ];

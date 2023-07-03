@@ -21,7 +21,10 @@ const sections = [
 
 const Index = (props) => {
     return (
-        <Base>
+        <Base
+            user={props?.auth?.user}
+            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Discover</h2>}
+        >
             <Head title="Discover" />
             <div>
                 <ContentBase>
