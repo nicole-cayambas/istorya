@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DiscoverController::class, 'index'])->name('discover');
 Route::get('/story/{story}', [StoryController::class, 'show']);
-
 // Route::get('/dashboard', function () {
 //     return Inertia::render('Dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
@@ -29,6 +28,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::patch('/profile', 'update')->name('profile.update');
         Route::delete('/profile', 'destroy')->name('profile.destroy');
     });
+
+    Route::get('my-stories', [StoryController::class, 'listOwnStories'])->name('my-stories');
 });
 
 require __DIR__ . '/auth.php';

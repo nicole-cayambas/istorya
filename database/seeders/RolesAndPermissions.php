@@ -14,7 +14,13 @@ class RolesAndPermissions extends Seeder
      */
     public function run(): void
     {
-        Role::create(['name' => 'developer']);
+        Permission::create(['name' => 'view_admin']);
         Permission::create(['name' => 'view_users']);
+        Role::create(['name' => 'developer'])
+        ->syncPermissions([
+            'view_admin',
+            'view_users'
+        ]);
+        Role::create(['name' => 'free_user']);
     }
 }
