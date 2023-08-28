@@ -21,6 +21,13 @@ class StoryController extends Controller
         ]);
     }
 
+    public function listOwnStories(SearchStoriesRequest $request)
+    {
+        return Inertia::render('MyStories/Index', [
+            'result' => $request->searchStories(true)
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

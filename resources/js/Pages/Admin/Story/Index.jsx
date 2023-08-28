@@ -6,7 +6,7 @@ import ContentBase from '@/Layouts/ContentBase';
 import { Head, useForm } from '@inertiajs/react';
 import React from 'react'
 
-const Index = ({ result }) => {
+const Index = ({ auth, result }) => {
     const { current_page, from, to, last_page, total, next_page_url, prev_page_url, links, search } = result.meta;
     const stories = result.data;
     const { get, data, setData } = useForm({ search: search || '' });
@@ -17,7 +17,7 @@ const Index = ({ result }) => {
             { preserveState: true })
     }
     return (
-        <Base>
+        <Base user={auth.user}>
             <ContentBase>
                 <Head title={'Stories'} />
                 <form className='pb-4 flex justify-end' onSubmit={submit}>

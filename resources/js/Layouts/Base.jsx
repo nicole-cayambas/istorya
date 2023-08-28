@@ -6,9 +6,9 @@ import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link, router } from '@inertiajs/react';
 import PrimaryButton from '@/Components/PrimaryButton';
 
-export default function Base({ user, header, children }) {
+export default function Base({ user, header, permissions, children }) {
   const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
-
+  console.log(permissions);
   return (
     <div className="min-h-screen bg-gray-100">
       <nav className="bg-white border-b border-gray-100 sticky top-0 z-50">
@@ -21,9 +21,23 @@ export default function Base({ user, header, children }) {
                 </Link>
               </div>
 
+              {permissions?.includes('view_admin') &&
+                <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                  <NavLink href={route('admin')} active={route().current('admin')}>
+                    Admin
+                  </NavLink>
+                </div>
+              }
+
               <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                 <NavLink href={route('discover')} active={route().current('discover')}>
                   Discover
+                </NavLink>
+              </div>
+
+              <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <NavLink href={route('my-stories')} active={route().current('my-stories')}>
+                  My Stories
                 </NavLink>
               </div>
             </div>

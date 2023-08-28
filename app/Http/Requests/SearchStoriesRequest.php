@@ -30,8 +30,11 @@ class SearchStoriesRequest extends FormRequest
         ];
     }
 
-    public function searchStories()
+    public function searchStories($own = false)
     {
-        return new StoryCollection(Story::search($this));
+        $queryResults = $own
+            ? Story::ownSearch($this)
+            : Story::allSearch($this);
+        return new StoryCollection($queryResults);
     }
 }

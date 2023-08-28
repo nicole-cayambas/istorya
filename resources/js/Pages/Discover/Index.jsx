@@ -23,6 +23,7 @@ const Index = (props) => {
     return (
         <Base
             user={props?.auth?.user}
+            permissions={props?.permissions}
             header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Discover</h2>}
         >
             <Head title="Discover" />
