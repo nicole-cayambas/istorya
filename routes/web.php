@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DiscoverController;
 use App\Http\Controllers\StoryController;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DiscoverController::class, 'index'])->name('discover');
 Route::get('/story/{story}', [StoryController::class, 'show']);
-// Route::get('/dashboard', function () {
-//     return Inertia::render('Dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return Inertia::render('Dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::controller(ProfileController::class)->group(function () {

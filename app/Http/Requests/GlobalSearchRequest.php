@@ -33,6 +33,6 @@ class GlobalSearchRequest extends FormRequest
         return [
             'stories' => [],
             'users' => []
-        ]
+        ];
     }
 }

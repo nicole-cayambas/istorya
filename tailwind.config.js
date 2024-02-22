@@ -15,6 +15,9 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            rotate: {
+                '270': '270deg',
+            }
         },
     },
 
